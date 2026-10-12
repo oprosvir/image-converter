@@ -2,6 +2,8 @@
 
 A fast, private, and lightweight 100% client-side image converter and PDF merger. Convert photos, graphics, Apple HEIC, and scan documents directly in your browser without uploading files to any server.
 
+🚀 **Live Web App**: [https://oprosvir.github.io/image-converter/](https://oprosvir.github.io/image-converter/)
+
 ---
 
 <img src="assets/preview.png" alt="Local Image Converter Preview" width="800">
