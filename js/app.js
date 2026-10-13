@@ -30,7 +30,7 @@
     qualityValue: document.getElementById('qualityValue'),
     pdfOptionsGroup: document.getElementById('pdfOptionsGroup'),
     icoOptionsGroup: document.getElementById('icoOptionsGroup'),
-    btnConvertAll: document.getElementById('btnConvertAll'),
+    btnConvertAll: document.getElementById('btnConvertAllTop') || document.getElementById('btnConvertAll'),
     btnDownloadZip: document.getElementById('btnDownloadZip'),
     btnDownloadPdf: document.getElementById('btnDownloadPdf'),
     btnClearAll: document.getElementById('btnClearAll'),
@@ -196,7 +196,7 @@
     if (state.queue.length === 0) {
       el.queueContainer.style.display = 'none';
       el.statsBar.style.display = 'none';
-      el.btnConvertAll.disabled = true;
+      if (el.btnConvertAll) el.btnConvertAll.disabled = true;
       el.btnDownloadZip.disabled = true;
       el.btnDownloadPdf.disabled = true;
       return;
@@ -204,7 +204,7 @@
 
     el.queueContainer.style.display = 'block';
     el.statsBar.style.display = 'flex';
-    el.btnConvertAll.disabled = state.isConverting;
+    if (el.btnConvertAll) el.btnConvertAll.disabled = state.isConverting;
 
     const hasDoneItems = state.queue.some(it => it.status === 'done');
     el.btnDownloadZip.disabled = !hasDoneItems;
@@ -352,8 +352,10 @@
     if (state.isConverting || state.queue.length === 0) return;
 
     state.isConverting = true;
-    el.btnConvertAll.disabled = true;
-    el.btnConvertAll.innerHTML = '<div class="spinner"></div> Converting...';
+    if (el.btnConvertAll) {
+      el.btnConvertAll.disabled = true;
+      el.btnConvertAll.innerHTML = '<div class="spinner"></div> Converting...';
+    }
 
     // Active options snapshot
     const options = {
@@ -404,11 +406,13 @@
     }
 
     state.isConverting = false;
-    el.btnConvertAll.disabled = false;
-    el.btnConvertAll.innerHTML = `
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Convert All
-    `;
+    if (el.btnConvertAll) {
+      el.btnConvertAll.disabled = false;
+      el.btnConvertAll.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Convert All
+      `;
+    }
     renderQueue();
     updateStats();
   }
@@ -596,7 +600,9 @@
     });
 
     // Main Actions
-    el.btnConvertAll.addEventListener('click', convertAll);
+    if (el.btnConvertAll) {
+      el.btnConvertAll.addEventListener('click', convertAll);
+    }
     el.btnDownloadZip.addEventListener('click', downloadZip);
     el.btnDownloadPdf.addEventListener('click', downloadSinglePdfDoc);
     el.btnClearAll.addEventListener('click', clearAll);

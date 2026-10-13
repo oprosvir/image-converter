@@ -42,6 +42,14 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         '.ico': 'image/x-icon'
     })
 
+    def do_GET(self):
+        # Silently handle Chrome DevTools auto-probe
+        if self.path.startswith('/.well-known/'):
+            self.send_response(204)
+            self.end_headers()
+            return
+        super().do_GET()
+
     def end_headers(self):
         self.send_header('Cache-Control', 'no-cache, must-revalidate')
         super().end_headers()

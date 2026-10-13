@@ -69,22 +69,22 @@
 
       <div class="settings-grid">
         <!-- Target Format -->
-        <div class="setting-item">
+        <div class="setting-item format-setting">
           <label for="globalFormat">Target format:</label>
           <select id="globalFormat" class="form-select">
-            <option value="jpg">JPG / JPEG (Universal, Photos)</option>
-            <option value="jfif">JFIF (JPEG File Interchange Format)</option>
-            <option value="png">PNG (Lossless, Transparency)</option>
-            <option value="webp" selected>WebP (Modern, High Compression)</option>
-            <option value="avif">AVIF (Next-Gen Superior Compression)</option>
-            <option value="ico">ICO (Icons &amp; Favicons)</option>
-            <option value="bmp">BMP (Uncompressed Bitmap)</option>
-            <option value="pdf">PDF (Document / Scans)</option>
+            <option value="jpg">JPG</option>
+            <option value="jfif">JFIF</option>
+            <option value="png">PNG</option>
+            <option value="webp" selected>WebP</option>
+            <option value="avif">AVIF</option>
+            <option value="ico">ICO</option>
+            <option value="bmp">BMP</option>
+            <option value="pdf">PDF</option>
           </select>
         </div>
 
         <!-- Quality Slider -->
-        <div id="qualityGroup" class="setting-item">
+        <div id="qualityGroup" class="setting-item quality-setting">
           <label for="qualitySlider">
             <span>Compression quality:</span>
             <span id="qualityValue" class="range-val">85%</span>
@@ -95,19 +95,27 @@
         </div>
 
         <!-- PDF Options -->
-        <div id="pdfOptionsGroup" class="setting-item" style="display:none;">
+        <div id="pdfOptionsGroup" class="setting-item info-setting" style="display:none;">
           <label>PDF Document Mode:</label>
-          <p style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">
             Standard A4 pages for scan batches without distortion.
           </p>
         </div>
 
         <!-- ICO Options -->
-        <div id="icoOptionsGroup" class="setting-item" style="display:none;">
+        <div id="icoOptionsGroup" class="setting-item info-setting" style="display:none;">
           <label>ICO Icon Bundle:</label>
-          <p style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">
             Includes multi-resolution bundle: 16×16, 32×32, 48×48, 64×64, 128×128, 256×256 px.
           </p>
+        </div>
+
+        <!-- Top Convert Action -->
+        <div class="setting-item action-setting">
+          <button id="btnConvertAllTop" class="btn btn-primary btn-convert-main" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Convert All
+          </button>
         </div>
       </div>
     </div>
@@ -145,13 +153,8 @@
         <!-- Rendered dynamically by app.js -->
       </div>
 
-      <!-- Bottom Main Action Bar -->
+      <!-- Bottom Export Action Bar -->
       <div class="bottom-bar">
-        <button id="btnConvertAll" class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Convert All
-        </button>
-
         <div class="action-buttons-group">
           <button id="btnDownloadPdf" class="btn btn-secondary" disabled>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
