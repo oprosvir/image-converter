@@ -2,7 +2,7 @@
 
 A fast, private, and lightweight 100% client-side image converter and PDF merger. Convert photos, graphics, Apple HEIC, and scan documents directly in your browser without uploading files to any server.
 
-🚀 **Live Web App**: [https://oprosvir.github.io/image-converter/](https://oprosvir.github.io/image-converter/)
+🚀 **Live Web App: [https://oprosvir.github.io/image-converter/](https://oprosvir.github.io/image-converter/)**
 
 ---
 
@@ -89,10 +89,6 @@ Selecting the same source and target format (e.g. `JPG ➔ JPG` or `WebP ➔ Web
 image-converter/
 ├── index.html           # Main semantic single-page application UI
 ├── logo.png             # Application logo & browser favicon
-├── app.ico              # Multi-resolution Windows desktop shortcut icon
-├── server.py            # Zero-dependency local Python HTTP launcher (Python 3 stdlib)
-├── run.bat              # One-click launcher for Windows
-├── run.sh               # One-click launcher for Linux and macOS
 ├── css/
 │   └── styles.css       # Responsive dark/light theme stylesheet
 └── js/
@@ -110,22 +106,34 @@ image-converter/
 
 ## Quick Start
 
-### Windows
-1. Double-click **`run.bat`**.
-2. The application will start and automatically open in your default browser at `http://localhost:8000/`.
-3. *(Alternative)*: You can also double-click **`index.html`** directly without running Python.
+### 1. Web App (Instant)
+Use the live app directly in your browser without downloading anything:  
+👉 **[https://oprosvir.github.io/image-converter/](https://oprosvir.github.io/image-converter/)**
 
-### Linux & macOS
-1. Open terminal and run:
+### 2. Run Locally (100% Offline)
+Zero setup, zero dependencies, no installation or build tools required:
+
+1. **Clone the repository**:
    ```bash
-   ./run.sh
+   git clone https://github.com/oprosvir/image-converter.git
+   cd image-converter
    ```
-   *(Or simply run `python3 server.py`)*.
-2. *(Alternative)*: Open `index.html` directly in your browser:
+   *(Or download and extract the repository ZIP archive)*.
+
+2. **Open in any browser**:
+   Simply double-click **`index.html`** in your file manager, or launch from terminal:
    ```bash
-   xdg-open index.html   # Linux
-   open index.html       # macOS
+   # Windows
+   start index.html
+
+   # macOS
+   open index.html
+
+   # Linux
+   xdg-open index.html
    ```
+
+All conversions run purely in client-side memory — no Node.js, Python, or local web server required.
 
 ---
 
